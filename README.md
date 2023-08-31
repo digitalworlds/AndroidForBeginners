@@ -1,4 +1,4 @@
-# AndroidForBeginners
+# Android For Beginners
 A collection of Android projects used in the course DIG4634 Wearable and Mobile App Development.
 The collection was compiled by Prof. Angelos Barmpoutis to accompany the lectures of the course.
 
