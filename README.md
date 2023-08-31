@@ -1,5 +1,5 @@
 # Android For Beginners
-A collection of Android projects (in Java) used in the course DIG4634 Wearable and Mobile App Development.
+A collection of Android Studio projects (in Java) used in the course DIG4634 Wearable and Mobile App Development.
 The collection was compiled by Prof. Angelos Barmpoutis to accompany the lectures of the course.
 
 ## Contents
