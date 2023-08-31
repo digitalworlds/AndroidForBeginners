@@ -1,5 +1,5 @@
 # Android For Beginners
-A collection of Android projects used in the course DIG4634 Wearable and Mobile App Development.
+A collection of Android projects (in Java) used in the course DIG4634 Wearable and Mobile App Development.
 The collection was compiled by Prof. Angelos Barmpoutis to accompany the lectures of the course.
 
 ## Contents
@@ -15,7 +15,7 @@ The examples cover the following topics:
 8. 3D geometry and animations 🎮
 9. Cameras in Android 📷
 10. Local Storage 💽
-11. Using Android Studio to build apps for Oculus Quest (moved to the repository: https://github.com/digitalworlds/JavaForQuest)
+11. Using Android Studio to build apps for Oculus Quest in Java (moved to the repository: https://github.com/digitalworlds/JavaForQuest)
 
 ## How to run
 
