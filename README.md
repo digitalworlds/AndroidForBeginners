@@ -14,7 +14,8 @@ The examples cover the following topics:
 7. 3D rendering with GLSurfaceView
 8. 3D geometry and animations
 9. Cameras in Android
-10. Local Storage 
+10. Local Storage
+11. Using Android Studio to build apps for Oculus Quest (moved to the repository: https://github.com/digitalworlds/JavaForQuest)
 
 ## How to run
 
