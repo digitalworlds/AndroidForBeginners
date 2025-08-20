@@ -11,13 +11,13 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.wearable.activity.WearableActivity;
+import androidx.activity.ComponentActivity;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.TextView;
 
-public class SecondActivity extends WearableActivity  implements SensorEventListener, SurfaceHolder.Callback {
+public class SecondActivity extends ComponentActivity implements SensorEventListener, SurfaceHolder.Callback {
 
     Paint red_fill;
     Paint white_stroke;

@@ -2,11 +2,13 @@ package com.example.dig4634.wearosexample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.wearable.activity.WearableActivity;
+import androidx.activity.ComponentActivity;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends WearableActivity {
+
+
+public class MainActivity extends ComponentActivity {
 
     private TextView mTextView;
 
@@ -16,9 +18,6 @@ public class MainActivity extends WearableActivity {
         setContentView(R.layout.activity_main);
 
         mTextView = (TextView) findViewById(R.id.text);
-
-        // Enables Always-on
-        setAmbientEnabled();
     }
 
     public void onOKClick(View view){
