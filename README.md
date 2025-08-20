@@ -19,7 +19,7 @@ The examples cover the following topics:
 
 ## How to run
 
-- [x] Download Android Studio: https://developer.android.com/studio  (These apps have been tested using Android Studio Giraffe | 2022.3.1 Patch 1)
+- [x] Download Android Studio: https://developer.android.com/studio  (These apps have been tested using Android Studio Narwhal Feature Drop | 2025.1.2 Patch 1)
 - [x] In Android Studio create an Android Virtual Device to run the apps.
 - [x] Open in Android Studio the `build.gradle` located inside the respective project folder.
 - [x] Use the project viewer (left panel) to explore the files of the project. The source code is located inside the folder `java` and the resources are inside the folder `res`.
