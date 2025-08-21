@@ -1,0 +1,24 @@
+[versions]
+agp = "8.12.1"
+wearable = "2.4.0"
+playServicesWearable = "16.0.1"
+percentLayout = "1.0.0"
+legacySupportV4 = "1.0.0"
+recyclerView = "1.0.0"
+palette = "1.0.0"
+
+[libraries]
+wearable = { module = "com.google.android.support:wearable", version.ref = "wearable" }
+wearable-compileOnly = { module = "com.google.android.wearable:wearable", version.ref = "wearable" }
+play-services-wearable = { module = "com.google.android.gms:play-services-wearable", version.ref = "playServicesWearable" }
+percent-layout = { module = "androidx.percentlayout:percentlayout", version.ref = "percentLayout" }
+legacy-support-v4 = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacySupportV4" }
+recycler-view = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerView" }
+palette = { module = "androidx.palette:palette", version.ref = "palette" }
+
+
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+
