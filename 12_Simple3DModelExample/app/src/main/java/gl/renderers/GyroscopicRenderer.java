@@ -3,6 +3,7 @@ package gl.renderers;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
 import android.hardware.Sensor;
@@ -179,26 +180,22 @@ public abstract class GyroscopicRenderer extends GLRenderer implements SensorEve
     }
 
     private SensorManager mSensorManager;
-    private Sensor gyroscope;
-    private Sensor accelerometer;
+    private Sensor rotationVectorSensor;
 
 
     public GyroscopicRenderer(Activity activity) {
         super(activity);
 
+        activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
+
         mSensorManager = (SensorManager) activity.getSystemService(Context.SENSOR_SERVICE);
 
-        gyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-        if (gyroscope != null) {
-            mSensorManager.registerListener(this, gyroscope,
-                    SensorManager.SENSOR_DELAY_FASTEST);
+        rotationVectorSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+        if (rotationVectorSensor != null) {
+            mSensorManager.registerListener(this, rotationVectorSensor,
+                    SensorManager.SENSOR_DELAY_GAME);
         }
 
-        accelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        if (accelerometer != null) {
-            mSensorManager.registerListener(this, accelerometer,
-                    SensorManager.SENSOR_DELAY_FASTEST);
-        }
     }
 
     @Override
@@ -217,46 +214,16 @@ public abstract class GyroscopicRenderer extends GLRenderer implements SensorEve
         view.identity().translate(rotation_center_X,rotation_center_Y,rotation_center_Z).multiply(m_rotationMatrix).rotateX(90).translate(-rotation_center_X,-rotation_center_Y,-rotation_center_Z);
     }
 
-    float[] m_lastMagFields = new float[3];;
-    float[] m_lastAccels = new float[3];;
     private float[] m_rotationMatrix = new float[16];
-    private float[] m_orientation = new float[4];
-
-    public float Pitch = 0.f;
-    public float Heading = 0.f;
-    public float Roll = 0.f;
-    public float Declination = 0;
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        switch (event.sensor.getType()) {
-            case Sensor.TYPE_ACCELEROMETER:
-                System.arraycopy(event.values, 0, m_lastAccels, 0, 3);
-                break;
-            case Sensor.TYPE_MAGNETIC_FIELD:
-                System.arraycopy(event.values, 0, m_lastMagFields, 0, 3);
-                break;
-            default:
-                return;
-        }
 
-        computeOrientation();
+        SensorManager.getRotationMatrixFromVector(m_rotationMatrix,event.values);
+
+
     }
 
-    private void computeOrientation() {
-        if (SensorManager.getRotationMatrix(m_rotationMatrix, null, m_lastAccels, m_lastMagFields)) {
-            SensorManager.getOrientation(m_rotationMatrix, m_orientation);
-
-            float yaw = (float) (Math.toDegrees(m_orientation[0]) + Declination);
-            float pitch = (float) Math.toDegrees(m_orientation[1]);
-            float roll = (float) Math.toDegrees(m_orientation[2]);
-
-            Heading = Heading*0.9f+yaw*0.1f;
-            Pitch = Pitch*0.9f+pitch*0.1f;
-            Roll = Roll*0.9f+roll*0.1f;
-
-        }
-    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
@@ -266,8 +233,7 @@ public abstract class GyroscopicRenderer extends GLRenderer implements SensorEve
 
     @Override
     public void destroy(){
-        if(gyroscope!=null) mSensorManager.unregisterListener(this,gyroscope);
-        if(accelerometer!=null) mSensorManager.unregisterListener(this,accelerometer);
+        if(rotationVectorSensor!=null) mSensorManager.unregisterListener(this,rotationVectorSensor);
         super.destroy();
     }
 

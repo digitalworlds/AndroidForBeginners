@@ -7,9 +7,10 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import gl.Texture;
+import gl.renderers.GyroscopicRenderer;
 import gl.renderers.ThirdEyeRenderer;
 
-public class MyRenderer extends ThirdEyeRenderer implements View.OnTouchListener {
+public class MyRenderer extends GyroscopicRenderer implements View.OnTouchListener {
 
     Triangle my_triangle;
     Cube my_cube;

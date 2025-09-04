@@ -6,9 +6,10 @@ import android.opengl.GLES30;
 
 import gl.Texture;
 import gl.renderers.GLRenderer;
+import gl.renderers.GyroscopicRenderer;
 import gl.renderers.ThirdEyeRenderer;
 
-public class MyRenderer extends ThirdEyeRenderer {
+public class MyRenderer extends GyroscopicRenderer {
 
     Triangle my_triangle;
     Cube my_cube;

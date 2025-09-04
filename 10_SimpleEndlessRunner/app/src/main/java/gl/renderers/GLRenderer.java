@@ -26,6 +26,8 @@ public abstract class GLRenderer implements GLSurfaceView.Renderer {
     public Transform view;
 
 
+    protected int width;
+    protected int height;
     private Context context;
     private Activity activity;
     public Context getContext(){return context;}
@@ -72,6 +74,8 @@ public abstract class GLRenderer implements GLSurfaceView.Renderer {
     }
 
     public void onSurfaceChanged(GL10 unused, int width, int height) {
+        this.width=width;
+        this.height=height;
         GLES30.glViewport(0, 0, width, height);
 
         setupProjection(width,height);
